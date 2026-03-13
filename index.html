@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mi Página con Gráfico</title>
+    <title>Visualizaciones</title>
 
     <style>
         body{
@@ -27,6 +27,15 @@
             background: white;
         }
 
+        section{
+            margin-bottom: 40px;
+        }
+
+        object{
+            width: 100%;
+            height: 600px;
+        }
+
         footer{
             background: #333;
             color: white;
@@ -39,12 +48,13 @@
 <body>
 
 <header>
-    <h1>Mi Página Web</h1>
+    <h1>Visualizaciones de Datos</h1>
 </header>
 
 <main>
-    <h2>Visualización de datos</h2>
-    <p>Debajo se muestra un gráfico interactivo:</p>
+
+<section>
+    <h2>Gráfico interactivo</h2>
 
     <div class="flourish-embed flourish-chart" data-src="visualisation/28049799">
         <script src="https://public.flourish.studio/resources/embed.js"></script>
@@ -52,6 +62,15 @@
             <img src="https://public.flourish.studio/visualisation/28049799/thumbnail" width="100%" alt="visualization" />
         </noscript>
     </div>
+
+</section>
+
+<section>
+    <h2>Gráfico SVG</h2>
+
+    <object type="image/svg+xml" data="./infovis/viz.svg"></object>
+
+</section>
 
 </main>
 
