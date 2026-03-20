@@ -3,52 +3,40 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>My Graphs</title>
+<title>¿Qué miramo?</title>
 
 <style>
 body{
-    font-family: Arial, sans-serif;
     margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0f172a, #1e293b);
+    color: white;
 }
 
 header{
-    background: #edeef2;
-    color: #3a4a94;
-    padding: 15px;
     text-align: center;
+    padding: 40px 20px 20px 20px;
+}
+
+h1{
+    font-size: 3rem;
+    margin: 0;
+    background: linear-gradient(90deg, #f97316, #22c55e, #38bdf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 main{
-    padding: 20px;
-    max-width: 900px;
+    max-width: 1000px;
     margin: auto;
-    background: white;
+    padding: 20px;
 }
 
-section{
-    margin-bottom: 40px;
-}
-
-object{
-    width: 100%;
-    height: 600px;
-}
-
-.gradient-title{
-    background: linear-gradient(90deg, #fa8c00, #009076);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 700;
-}
-
-footer{
-    background: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-    margin-top: 20px;
+.chart-container{
+    background: #0b1220;
+    padding: 20px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
 }
 </style>
 </head>
@@ -56,61 +44,21 @@ footer{
 <body>
 
 <header>
-<h1>My Graphs</h1>
+<h1>¿Qué miramo?</h1>
 </header>
 
 <main>
+<div class="chart-container">
 
-<section>
-<h2>Gráfico interactivo</h2>
-
-<div class="flourish-embed flourish-chart" data-src="visualisation/28049799">
+<div class="flourish-embed flourish-chart" data-src="visualisation/28159866">
 <script src="https://public.flourish.studio/resources/embed.js"></script>
 <noscript>
-<img src="https://public.flourish.studio/visualisation/28049799/thumbnail" width="100%" alt="visualization" />
+<img src="https://public.flourish.studio/visualisation/28159866/thumbnail" width="100%" alt="visualization" />
 </noscript>
 </div>
-</section>
 
-<section>
-<h2>Gráfico SVG</h2>
-<img src="viz.svg" width="100%">
-</section>
-
-<section>
-<h2>
-Men vs Women: Topping Preferences by gender
-</h2>
-
-<iframe title="Men vs Women: Topping Preferences by gender"
-aria-label="Range Plot"
-id="datawrapper-chart-rHM6L"
-src="https://datawrapper.dwcdn.net/rHM6L/1/"
-scrolling="no"
-frameborder="0"
-style="width:0; min-width:100% !important; border:none;"
-height="456"
-data-external="1"></iframe>
-
-<script type="text/javascript">
-window.addEventListener("message",function(a){
-if(void 0!==a.data["datawrapper-height"]){
-var e=document.querySelectorAll("iframe");
-for(var t in a.data["datawrapper-height"])
-for(var r,i=0;r=e[i];i++)
-if(r.contentWindow===a.source){
-var d=a.data["datawrapper-height"][t]+"px";
-r.style.height=d
-}}});
-</script>
-
-</section>
-
+</div>
 </main>
-
-<footer>
-<p>© 2026 - Mi sitio</p>
-</footer>
 
 </body>
 </html>
