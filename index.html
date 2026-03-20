@@ -15,7 +15,7 @@ body{
 
 header{
     text-align: center;
-    padding: 40px 20px 20px 20px;
+    padding: 40px 20px 10px 20px;
 }
 
 h1{
@@ -24,6 +24,13 @@ h1{
     background: linear-gradient(90deg, #f97316, #22c55e, #38bdf8);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.subtitle{
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #cbd5f5;
+    font-style: italic;
 }
 
 main{
@@ -37,7 +44,23 @@ main{
     padding: 20px;
     border-radius: 16px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+}
+
+.chart-caption{
+    margin-top: 15px;
+}
+
+.chart-caption h3{
+    margin: 0;
+    font-size: 1.3rem;
+    color: #38bdf8;
+}
+
+.chart-caption p{
+    margin-top: 5px;
+    font-size: 0.95rem;
+    color: #94a3b8;
 }
 </style>
 </head>
@@ -46,22 +69,35 @@ main{
 
 <header>
 <h1>¿Qué miramo?</h1>
+<div class="subtitle">mi relación (íntima) con YouTube... hábitos, obsesiones y patrones ocultos 👀</div>
 </header>
 
 <main>
 
 <!-- FLOURISH -->
 <div class="chart-container">
+
 <div class="flourish-embed flourish-chart" data-src="visualisation/28159866">
 <script src="https://public.flourish.studio/resources/embed.js"></script>
 <noscript>
 <img src="https://public.flourish.studio/visualisation/28159866/thumbnail" width="100%" alt="visualization" />
 </noscript>
 </div>
+
+<div class="chart-caption">
+<h3>¿Qué tipo de contenido consumo?</h3>
+<p>
+Este gráfico muestra la distribución de los videos vistos según su categoría. 
+Permite identificar rápidamente qué tipo de contenido domina mi consumo en YouTube 
+y cómo se reparten mis intereses entre entretenimiento, educación, música y más.
+</p>
+</div>
+
 </div>
 
 <!-- TABLEAU -->
 <div class="chart-container">
+
 <div class='tableauPlaceholder' id='viz1774043221882' style='position: relative'>
 <noscript>
 <a href='#'>
@@ -102,6 +138,15 @@ var scriptElement = document.createElement('script');
 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
 vizElement.parentNode.insertBefore(scriptElement, vizElement);
 </script>
+
+<div class="chart-caption">
+<h3>¿Qué días miro más YouTube?</h3>
+<p>
+Este gráfico explora el comportamiento de consumo a lo largo de la semana, 
+mostrando cuántos videos veo por día. Permite detectar patrones de uso, 
+como picos durante el fin de semana o momentos específicos de mayor actividad.
+</p>
+</div>
 
 </div>
 
