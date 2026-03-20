@@ -73,7 +73,9 @@ main{
 
 <header>
 <h1>¿Qué miramo?</h1>
-<div class="subtitle">mi relación (íntima) con YouTube... hábitos, obsesiones y patrones ocultos 👀</div>
+<div class="subtitle">
+mi relación (íntima) con YouTube... hábitos, obsesiones y patrones ocultos 👀
+</div>
 </header>
 
 <main>
@@ -85,7 +87,7 @@ main{
 <div class="flourish-embed flourish-chart" data-src="visualisation/28159866">
 <script src="https://public.flourish.studio/resources/embed.js"></script>
 <noscript>
-<img src="https://public.flourish.studio/visualisation/28159866/thumbnail" width="100%" alt="visualization" />
+<img src="https://public.flourish.studio/visualisation/28159866/thumbnail" width="100%" />
 </noscript>
 </div>
 </div>
@@ -93,22 +95,24 @@ main{
 <div class="chart-caption">
 <h3>¿Qué tipo de contenido consumo?</h3>
 <p>
-Este gráfico muestra la distribución de los videos vistos según su categoría. 
-Permite identificar rápidamente qué tipo de contenido domina mi consumo en YouTube 
-y cómo se reparten mis intereses entre entretenimiento, educación y otros formatos.
+Distribución de los videos vistos según categoría. Permite identificar 
+qué tipo de contenido domina mi consumo y cómo se reparten mis intereses.
 </p>
 </div>
 
 </div>
 
-<!-- TABLEAU NUEVO -->
+<!-- TABLEAU -->
 <div class="chart-container">
 
 <div class="chart-inner">
 <div class='tableauPlaceholder' id='viz1774044985994' style='position: relative'>
+
 <noscript>
 <a href='#'>
-<img alt='Dashboard 2' src='https://public.tableau.com/static/images/Ma/Masgraficos/Dashboard2/1_rss.png' style='border: none' />
+<img alt='Dashboard 2'
+src='https://public.tableau.com/static/images/Ma/Masgraficos/Dashboard2/1_rss.png'
+style='border: none' />
 </a>
 </noscript>
 
@@ -119,7 +123,8 @@ y cómo se reparten mis intereses entre entretenimiento, educación y otros form
 <param name='name' value='Masgraficos/Dashboard2' />
 <param name='tabs' value='no' />
 <param name='toolbar' value='yes' />
-<param name='static_image' value='https://public.tableau.com/static/images/Ma/Masgraficos/Dashboard2/1.png' />
+<param name='static_image'
+value='https://public.tableau.com/static/images/Ma/Masgraficos/Dashboard2/1.png' />
 <param name='animate_transition' value='yes' />
 <param name='display_static_image' value='yes' />
 <param name='display_spinner' value='yes' />
@@ -127,6 +132,7 @@ y cómo se reparten mis intereses entre entretenimiento, educación y otros form
 <param name='display_count' value='yes' />
 <param name='language' value='en-US' />
 </object>
+
 </div>
 </div>
 
@@ -134,13 +140,9 @@ y cómo se reparten mis intereses entre entretenimiento, educación y otros form
 var divElement = document.getElementById('viz1774044985994');
 var vizElement = divElement.getElementsByTagName('object')[0];
 
-if (divElement.offsetWidth > 800) {
-    vizElement.style.width='100%';
-    vizElement.style.height='720px';
-} else {
-    vizElement.style.width='100%';
-    vizElement.style.height='630px';
-}
+// 👇 CLAVE: altura grande para evitar corte
+vizElement.style.width = '100%';
+vizElement.style.height = '1000px';
 
 var scriptElement = document.createElement('script');
 scriptElement.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
@@ -150,8 +152,8 @@ vizElement.parentNode.insertBefore(scriptElement, vizElement);
 <div class="chart-caption">
 <h3>¿Qué días miro más YouTube?</h3>
 <p>
-Este dashboard amplía el análisis del consumo semanal, permitiendo observar patrones 
-de uso más detallados y comparaciones entre distintos períodos de tiempo.
+Análisis del consumo semanal que permite detectar patrones de uso, 
+identificando los días con mayor actividad y comparando tendencias en el tiempo.
 </p>
 </div>
 
