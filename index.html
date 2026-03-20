@@ -9,8 +9,8 @@
 body{
     margin: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(135deg, #0f172a, #1e293b);
-    color: white;
+    background: #f8fafc;
+    color: #1e293b;
 }
 
 header{
@@ -21,30 +21,34 @@ header{
 h1{
     font-size: 3rem;
     margin: 0;
-    background: linear-gradient(90deg, #f97316, #22c55e, #38bdf8);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #0f172a;
 }
 
 .subtitle{
     margin-top: 10px;
     font-size: 1.2rem;
-    color: #cbd5f5;
+    color: #64748b;
     font-style: italic;
 }
 
 main{
-    max-width: 1000px;
+    max-width: 900px;
     margin: auto;
     padding: 20px;
 }
 
 .chart-container{
-    background: #0b1220;
-    padding: 20px;
+    background: #fefce8;
+    padding: 25px;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    border: 1px solid #e5e7eb;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     margin-bottom: 40px;
+}
+
+.chart-inner{
+    width: 90%;
+    margin: auto;
 }
 
 .chart-caption{
@@ -54,13 +58,13 @@ main{
 .chart-caption h3{
     margin: 0;
     font-size: 1.3rem;
-    color: #38bdf8;
+    color: #0f172a;
 }
 
 .chart-caption p{
     margin-top: 5px;
     font-size: 0.95rem;
-    color: #94a3b8;
+    color: #475569;
 }
 </style>
 </head>
@@ -77,11 +81,13 @@ main{
 <!-- FLOURISH -->
 <div class="chart-container">
 
+<div class="chart-inner">
 <div class="flourish-embed flourish-chart" data-src="visualisation/28159866">
 <script src="https://public.flourish.studio/resources/embed.js"></script>
 <noscript>
 <img src="https://public.flourish.studio/visualisation/28159866/thumbnail" width="100%" alt="visualization" />
 </noscript>
+</div>
 </div>
 
 <div class="chart-caption">
@@ -89,30 +95,31 @@ main{
 <p>
 Este gráfico muestra la distribución de los videos vistos según su categoría. 
 Permite identificar rápidamente qué tipo de contenido domina mi consumo en YouTube 
-y cómo se reparten mis intereses entre entretenimiento, educación, música y más.
+y cómo se reparten mis intereses entre entretenimiento, educación y otros formatos.
 </p>
 </div>
 
 </div>
 
-<!-- TABLEAU -->
+<!-- TABLEAU NUEVO -->
 <div class="chart-container">
 
-<div class='tableauPlaceholder' id='viz1774043221882' style='position: relative'>
+<div class="chart-inner">
+<div class='tableauPlaceholder' id='viz1774044985994' style='position: relative'>
 <noscript>
 <a href='#'>
-<img alt='Dashboard 1' src='https://public.tableau.com/static/images/Qu/Quediadelasemanamiromas/Dashboard1/1_rss.png' style='border: none' />
+<img alt='Dashboard 2' src='https://public.tableau.com/static/images/Ma/Masgraficos/Dashboard2/1_rss.png' style='border: none' />
 </a>
 </noscript>
 
 <object class='tableauViz' style='display:none;'>
 <param name='host_url' value='https://public.tableau.com/' />
 <param name='embed_code_version' value='3' />
-<param name='site_root' value=''/>
-<param name='name' value='Quediadelasemanamiromas/Dashboard1' />
+<param name='site_root' value='' />
+<param name='name' value='Masgraficos/Dashboard2' />
 <param name='tabs' value='no' />
 <param name='toolbar' value='yes' />
-<param name='static_image' value='https://public.tableau.com/static/images/Qu/Quediadelasemanamiromas/Dashboard1/1.png' />
+<param name='static_image' value='https://public.tableau.com/static/images/Ma/Masgraficos/Dashboard2/1.png' />
 <param name='animate_transition' value='yes' />
 <param name='display_static_image' value='yes' />
 <param name='display_spinner' value='yes' />
@@ -121,17 +128,18 @@ y cómo se reparten mis intereses entre entretenimiento, educación, música y m
 <param name='language' value='en-US' />
 </object>
 </div>
+</div>
 
 <script type='text/javascript'>
-var divElement = document.getElementById('viz1774043221882');
+var divElement = document.getElementById('viz1774044985994');
 var vizElement = divElement.getElementsByTagName('object')[0];
 
 if (divElement.offsetWidth > 800) {
     vizElement.style.width='100%';
-    vizElement.style.height='800px';
+    vizElement.style.height='720px';
 } else {
     vizElement.style.width='100%';
-    vizElement.style.height='700px';
+    vizElement.style.height='630px';
 }
 
 var scriptElement = document.createElement('script');
@@ -142,9 +150,8 @@ vizElement.parentNode.insertBefore(scriptElement, vizElement);
 <div class="chart-caption">
 <h3>¿Qué días miro más YouTube?</h3>
 <p>
-Este gráfico explora el comportamiento de consumo a lo largo de la semana, 
-mostrando cuántos videos veo por día. Permite detectar patrones de uso, 
-como picos durante el fin de semana o momentos específicos de mayor actividad.
+Este dashboard amplía el análisis del consumo semanal, permitiendo observar patrones 
+de uso más detallados y comparaciones entre distintos períodos de tiempo.
 </p>
 </div>
 
