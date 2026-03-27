@@ -34,6 +34,18 @@
       min-height: 100vh;
     }
 
+    /* SCROLL PROGRESS */
+    #scroll-progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--accent);
+      z-index: 200;
+      transition: width 0.05s linear;
+      box-shadow: 0 0 8px rgba(255,0,0,0.6);
+    }
+
     /* NAV */
     nav {
       position: fixed;
@@ -88,13 +100,84 @@
       overflow: hidden;
     }
 
-    .hero::before {
+    /* Collage fondo tipo Netflix */
+    .hero-collage {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      grid-template-rows: repeat(3, 1fr);
+      gap: 6px;
+      padding: 6px;
+      transform: skewY(-3deg) scale(1.12);
+      transform-origin: center center;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .hero-collage::after {
       content: '';
       position: absolute;
-      top: -200px; right: -200px;
-      width: 600px; height: 600px;
-      background: radial-gradient(circle, rgba(255,0,0,0.07) 0%, transparent 70%);
-      pointer-events: none;
+      inset: 0;
+      background:
+        linear-gradient(to right, #0a0a0a 28%, rgba(10,10,10,0.5) 55%, rgba(10,10,10,0.15) 100%),
+        linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, transparent 30%, transparent 70%, rgba(10,10,10,0.8) 100%);
+      z-index: 1;
+    }
+
+    .thumb {
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      align-items: flex-end;
+      padding: 10px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.85);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+      position: relative;
+      aspect-ratio: 16/9;
+    }
+
+    .thumb::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.75) 0%, transparent 60%);
+    }
+
+    .thumb span { position: relative; z-index: 1; }
+
+    /* Colores por categoría */
+    .t-red    { background: linear-gradient(135deg, #7a0000, #cc1a1a); }
+    .t-orange { background: linear-gradient(135deg, #7a3200, #cc6600); }
+    .t-blue   { background: linear-gradient(135deg, #001a4d, #1a4dcc); }
+    .t-green  { background: linear-gradient(135deg, #003300, #1a7a1a); }
+    .t-purple { background: linear-gradient(135deg, #2d0047, #7a1acc); }
+    .t-teal   { background: linear-gradient(135deg, #003344, #1a7a8a); }
+    .t-wine   { background: linear-gradient(135deg, #3d0022, #8a1a4d); }
+    .t-gold   { background: linear-gradient(135deg, #3d2e00, #996600); }
+    .t-gray   { background: linear-gradient(135deg, #1a1a1a, #3d3d3d); }
+
+    /* Ícono de play flotante */
+    .thumb-play {
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 28px; height: 28px;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      z-index: 1;
+    }
+    .thumb-play::after {
+      content: '';
+      border-style: solid;
+      border-width: 5px 0 5px 9px;
+      border-color: transparent transparent transparent rgba(255,255,255,0.9);
+      margin-left: 2px;
     }
 
     .hero::after {
@@ -104,7 +187,10 @@
       height: 1px;
       background: linear-gradient(90deg, transparent, var(--accent), transparent);
       opacity: 0.4;
+      z-index: 2;
     }
+
+    .hero > *:not(.hero-collage) { position: relative; z-index: 2; }
 
     .hero-eyebrow {
       font-size: 0.75rem;
@@ -149,6 +235,14 @@
       margin-bottom: 48px;
     }
 
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+      padding-bottom: 80px;
+    }
+
     .hero-meta {
       display: flex;
       gap: 40px;
@@ -186,6 +280,7 @@
       font-size: 0.72rem;
       letter-spacing: 0.12em;
       text-transform: uppercase;
+      z-index: 3;
     }
 
     .scroll-line {
@@ -310,6 +405,8 @@
 
 <body>
 
+  <div id="scroll-progress"></div>
+
   <!-- NAV -->
   <nav>
     <a class="nav-logo" href="#">¿Qué<span>.</span>miramo?</a>
@@ -322,6 +419,34 @@
 
   <!-- HERO -->
   <section class="hero">
+
+    <!-- Collage fondo tipo Netflix -->
+    <div class="hero-collage">
+      <div class="thumb t-red"><div class="thumb-play"></div><span>Sensual Musique</span></div>
+      <div class="thumb t-blue"><div class="thumb-play"></div><span>CHEBOLUDO</span></div>
+      <div class="thumb t-green"><div class="thumb-play"></div><span>Gitaris Virtual</span></div>
+      <div class="thumb t-purple"><div class="thumb-play"></div><span>Vorterix</span></div>
+      <div class="thumb t-teal"><div class="thumb-play"></div><span>ESPN Fans</span></div>
+      <div class="thumb t-gold"><div class="thumb-play"></div><span>Urbana Play</span></div>
+      <div class="thumb t-wine"><div class="thumb-play"></div><span>Kim Migneault</span></div>
+
+      <div class="thumb t-teal"><div class="thumb-play"></div><span>Andy Cooks</span></div>
+      <div class="thumb t-wine"><div class="thumb-play"></div><span>Iron Huevo</span></div>
+      <div class="thumb t-gold"><div class="thumb-play"></div><span>La Revuelta</span></div>
+      <div class="thumb t-red"><div class="thumb-play"></div><span>ESPN Deportes</span></div>
+      <div class="thumb t-blue"><div class="thumb-play"></div><span>Paren la mano</span></div>
+      <div class="thumb t-purple"><div class="thumb-play"></div><span>TiburonTe</span></div>
+      <div class="thumb t-green"><div class="thumb-play"></div><span>Dobrovolskyi</span></div>
+
+      <div class="thumb t-gray"><div class="thumb-play"></div><span>Eryka Travel</span></div>
+      <div class="thumb t-orange"><div class="thumb-play"></div><span>Germán Beder</span></div>
+      <div class="thumb t-red"><div class="thumb-play"></div><span>POPVEIN</span></div>
+      <div class="thumb t-teal"><div class="thumb-play"></div><span>Stefan B.</span></div>
+      <div class="thumb t-purple"><div class="thumb-play"></div><span>Andriw Curioso</span></div>
+      <div class="thumb t-blue"><div class="thumb-play"></div><span>Agustín Creevy</span></div>
+      <div class="thumb t-wine"><div class="thumb-play"></div><span>BadFriendClips</span></div>
+    </div>
+    <div class="hero-content">
     <div class="hero-eyebrow">Visualización de datos — YouTube</div>
     <h1 class="hero-title">
       ¿Qué<br>
@@ -332,17 +457,18 @@
     </p>
     <div class="hero-meta">
       <div class="meta-item">
-        <span class="meta-label">Visualizaciones</span>
-        <span class="meta-value">3</span>
+        <span class="meta-label">Videos vistos</span>
+        <span class="meta-value" data-count="7265" id="counter-videos">0</span>
       </div>
       <div class="meta-item">
-        <span class="meta-label">Plataforma</span>
-        <span class="meta-value">YouTube</span>
+        <span class="meta-label">Canales únicos</span>
+        <span class="meta-value" data-count="4137" id="counter-canales">0</span>
       </div>
       <div class="meta-item">
         <span class="meta-label">Año</span>
         <span class="meta-value">2025</span>
       </div>
+    </div>
     </div>
     <div class="scroll-hint">
       <span class="scroll-line"></span>
@@ -462,6 +588,15 @@
   </footer>
 
   <script>
+    // Scroll progress bar
+    const progressBar = document.getElementById('scroll-progress');
+    window.addEventListener('scroll', () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = pct + '%';
+    });
+
     // Fade-in on scroll
     const sections = document.querySelectorAll('.section');
     const observer = new IntersectionObserver((entries) => {
@@ -472,6 +607,34 @@
       });
     }, { threshold: 0.1 });
     sections.forEach(s => observer.observe(s));
+
+    // Animated counters
+    function animateCounter(el, target, duration) {
+      let start = 0;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        start += step;
+        if (start >= target) {
+          el.textContent = target.toLocaleString('es-AR');
+          clearInterval(timer);
+        } else {
+          el.textContent = Math.floor(start).toLocaleString('es-AR');
+        }
+      }, 16);
+    }
+
+    // Lanzar contadores cuando el hero es visible
+    const heroObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          document.querySelectorAll('[data-count]').forEach(el => {
+            animateCounter(el, parseInt(el.dataset.count), 1800);
+          });
+          heroObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    heroObserver.observe(document.querySelector('.hero-meta'));
   </script>
 
 </body>
