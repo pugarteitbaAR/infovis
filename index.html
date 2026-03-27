@@ -7,173 +7,467 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --background: #f8f9fc;
-      --foreground: #1a1d2e;
-      --muted-foreground: #6b7280;
+      --bg: #0a0a0a;
+      --surface: #121212;
+      --surface2: #1a1a1a;
+      --border: rgba(255,255,255,0.07);
+      --border-hover: rgba(255,255,255,0.15);
+      --text: #f0ede8;
+      --muted: #888580;
+      --accent: #ff0000;
+      --accent-dim: rgba(255,0,0,0.12);
+      --accent-glow: rgba(255,0,0,0.06);
     }
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
+    html { scroll-behavior: smooth; }
+
     body {
-      font-family: 'Inter', sans-serif;
-      background: var(--background);
-      color: var(--foreground);
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
     }
 
-    .font-heading { font-family: 'Space Grotesk', sans-serif; }
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      height: 56px;
+      background: rgba(10,10,10,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
 
+    .nav-logo {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+      color: var(--text);
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--accent); }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    /* HERO */
     .hero {
-      padding: 80px 20px;
-      text-align: center;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(255,0,0,0.07) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--accent), transparent);
+      opacity: 0.4;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--accent);
     }
 
     .hero-title {
-      font-size: 3rem;
-      font-weight: 700;
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: clamp(5rem, 14vw, 11rem);
+      line-height: 0.9;
+      letter-spacing: 0.01em;
+      color: var(--text);
+      margin-bottom: 32px;
+    }
+
+    .hero-title .line2 {
+      color: var(--accent);
+      display: block;
     }
 
     .hero-description {
-      margin-top: 10px;
-      color: var(--muted-foreground);
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: var(--muted);
+      max-width: 420px;
+      line-height: 1.7;
+      margin-bottom: 48px;
     }
 
-    .main-content {
-      width: 100%;
-      max-width: 1200px;
-      margin: auto;
-      padding: 0 20px 60px;
+    .hero-meta {
+      display: flex;
+      gap: 40px;
     }
 
-    .charts-container {
+    .meta-item {
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: 4px;
     }
 
-    .chart-section { width: 100%; }
-
-    .chart-header {
-      margin-bottom: 16px;
-      padding: 0 4px;
+    .meta-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
     }
 
-    .chart-title {
-      font-size: 1.4rem;
-      font-weight: 600;
+    .meta-value {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.6rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
     }
 
-    .chart-description {
-      font-size: 0.95rem;
-      color: var(--muted-foreground);
-      margin-top: 4px;
+    .scroll-hint {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
     }
 
-    .chart-body { width: 100%; }
+    .scroll-line {
+      width: 40px;
+      height: 1px;
+      background: var(--muted);
+      animation: scroll-pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes scroll-pulse {
+      0%,100% { width: 40px; opacity: 0.5; }
+      50% { width: 60px; opacity: 1; }
+    }
+
+    /* MAIN CONTENT */
+    main {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 40px 100px;
+    }
+
+    /* SECTIONS */
+    .section {
+      padding: 100px 0;
+      border-bottom: 1px solid var(--border);
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section:last-child { border-bottom: none; }
+
+    .section-header {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 32px;
+      align-items: start;
+      margin-bottom: 48px;
+    }
+
+    .section-number {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 5rem;
+      line-height: 1;
+      color: rgba(255,255,255,0.04);
+      letter-spacing: 0.02em;
+      user-select: none;
+      grid-row: 1 / 3;
+    }
+
+    .section-label {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 2.4rem;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      line-height: 1;
+    }
+
+    /* CHART CARD */
+    .chart-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .chart-card:hover { border-color: var(--border-hover); }
+
+    .chart-card-inner {
+      padding: 4px;
+    }
+
+    /* FOOTER */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 40px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+    }
+
+    .footer-brand {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.06em;
+      color: var(--text);
+    }
+
+    .footer-brand span { color: var(--accent); }
+
+    /* MOBILE */
+    @media (max-width: 640px) {
+      nav { padding: 0 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 0 24px; }
+      main { padding: 0 24px 80px; }
+      .hero-meta { flex-wrap: wrap; gap: 24px; }
+      .scroll-hint { left: 24px; }
+      footer { flex-direction: column; gap: 16px; text-align: center; padding: 32px 24px; }
+    }
   </style>
 </head>
 
 <body>
 
-<header class="hero">
-  <h1 class="hero-title font-heading">¿Qué miramo?</h1>
-  <p class="hero-description">Mi relación con YouTube</p>
-</header>
+  <!-- NAV -->
+  <nav>
+    <a class="nav-logo" href="#">¿Qué<span>.</span>miramo?</a>
+    <ul class="nav-links">
+      <li><a href="#contenido">Contenido</a></li>
+      <li><a href="#dias">Días</a></li>
+      <li><a href="#canales">Canales</a></li>
+    </ul>
+  </nav>
 
-<main class="main-content">
-  <div class="charts-container">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">Visualización de datos — YouTube</div>
+    <h1 class="hero-title">
+      ¿Qué<br>
+      <span class="line2">miramo?</span>
+    </h1>
+    <p class="hero-description">
+      Un análisis de mis hábitos de consumo en YouTube. Qué miro, cuándo y cuánto.
+    </p>
+    <div class="hero-meta">
+      <div class="meta-item">
+        <span class="meta-label">Visualizaciones</span>
+        <span class="meta-value">3</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Plataforma</span>
+        <span class="meta-value">YouTube</span>
+      </div>
+      <div class="meta-item">
+        <span class="meta-label">Año</span>
+        <span class="meta-value">2025</span>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span class="scroll-line"></span>
+      Scroll para explorar
+    </div>
+  </section>
+
+  <!-- MAIN -->
+  <main>
 
     <!-- CHART 1 -->
-    <div class="chart-section">
-      <div class="chart-header">
-        <h2 class="chart-title">¿Qué tipo de contenido consumo?</h2>
-        <p class="chart-description">Distribución por categoría</p>
+    <div class="section" id="contenido">
+      <div class="section-header">
+        <div class="section-number">01</div>
+        <div class="section-label">Categorías</div>
+        <h2 class="section-title">¿Qué tipo de contenido consumo?</h2>
       </div>
-      <div class="chart-body">
-        <div class="flourish-embed" data-src="visualisation/28160412">
-          <script src="https://public.flourish.studio/resources/embed.js"></script>
+      <div class="chart-card">
+        <div class="chart-card-inner">
+          <div class="flourish-embed" data-src="visualisation/28160412">
+            <script src="https://public.flourish.studio/resources/embed.js"></script>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- CHART 2 -->
-    <div class="chart-section">
-      <div class="chart-header">
-        <h2 class="chart-title">¿Qué días miro más YouTube?</h2>
-        <p class="chart-description">Consumo semanal</p>
+    <div class="section" id="dias">
+      <div class="section-header">
+        <div class="section-number">02</div>
+        <div class="section-label">Patrones</div>
+        <h2 class="section-title">¿Qué días miro más YouTube?</h2>
       </div>
-      <div class="chart-body">
-        <div class='tableauPlaceholder' id='viz1774313988468' style='position: relative; width: 100%;'>
-          <noscript><a href='#'><img alt='Dashboard 2' src='https://public.tableau.com/static/images/Gr/Graficos__Finales/Dashboard2/1_rss.png' style='border: none' /></a></noscript>
-          <object class='tableauViz' style='display:none;'>
-            <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
-            <param name='embed_code_version' value='3' />
-            <param name='site_root' value='' />
-            <param name='name' value='Graficos__Finales&#47;Dashboard2' />
-            <param name='tabs' value='no' />
-            <param name='toolbar' value='yes' />
-            <param name='static_image' value='https://public.tableau.com/static/images/Gr/Graficos__Finales/Dashboard2/1.png' />
-            <param name='animate_transition' value='yes' />
-            <param name='display_static_image' value='yes' />
-            <param name='display_spinner' value='yes' />
-            <param name='display_overlay' value='yes' />
-            <param name='display_count' value='yes' />
-            <param name='language' value='en-US' />
-          </object>
+      <div class="chart-card">
+        <div class="chart-card-inner">
+          <div class='tableauPlaceholder' id='viz1774313988468' style='position: relative; width: 100%;'>
+            <noscript><a href='#'><img alt='Dashboard 2' src='https://public.tableau.com/static/images/Gr/Graficos__Finales/Dashboard2/1_rss.png' style='border: none' /></a></noscript>
+            <object class='tableauViz' style='display:none;'>
+              <param name='host_url' value='https%3A%2F%2Fpublic.tableau.com%2F' />
+              <param name='embed_code_version' value='3' />
+              <param name='site_root' value='' />
+              <param name='name' value='Graficos__Finales&#47;Dashboard2' />
+              <param name='tabs' value='no' />
+              <param name='toolbar' value='yes' />
+              <param name='static_image' value='https://public.tableau.com/static/images/Gr/Graficos__Finales/Dashboard2/1.png' />
+              <param name='animate_transition' value='yes' />
+              <param name='display_static_image' value='yes' />
+              <param name='display_spinner' value='yes' />
+              <param name='display_overlay' value='yes' />
+              <param name='display_count' value='yes' />
+              <param name='language' value='en-US' />
+            </object>
+          </div>
+          <script type='text/javascript'>
+            var divElement = document.getElementById('viz1774313988468');
+            var vizElement = divElement.getElementsByTagName('object')[0];
+            function resizeViz2() {
+              var w = divElement.offsetWidth;
+              vizElement.style.width = '100%';
+              vizElement.style.height = (w > 500 ? Math.round(w * 0.75) : 727) + 'px';
+            }
+            resizeViz2();
+            window.addEventListener('resize', resizeViz2);
+            var s2 = document.createElement('script');
+            s2.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+            vizElement.parentNode.insertBefore(s2, vizElement);
+          </script>
         </div>
-        <script type='text/javascript'>
-          var divElement = document.getElementById('viz1774313988468');
-          var vizElement = divElement.getElementsByTagName('object')[0];
-          function resizeViz2() {
-            var w = divElement.offsetWidth;
-            vizElement.style.width = '100%';
-            vizElement.style.height = (w > 500 ? Math.round(w * 0.75) : 727) + 'px';
-          }
-          resizeViz2();
-          window.addEventListener('resize', resizeViz2);
-          var s2 = document.createElement('script');
-          s2.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-          vizElement.parentNode.insertBefore(s2, vizElement);
-        </script>
       </div>
     </div>
 
     <!-- CHART 3 -->
-    <div class="chart-section">
-      <div class="chart-header">
-        <h2 class="chart-title">Video viewed by channel</h2>
-        <p class="chart-description">Distribución por canal</p>
+    <div class="section" id="canales">
+      <div class="section-header">
+        <div class="section-number">03</div>
+        <div class="section-label">Canales</div>
+        <h2 class="section-title">Videos por canal</h2>
       </div>
-      <div class="chart-body">
-        <div id="viz2" style="position: relative; width: 100%;">
-          <object class="tableauViz" style="display:none;">
-            <param name="host_url" value="https://public.tableau.com/">
-            <param name="name" value="otrografico/Dashboard1">
-          </object>
+      <div class="chart-card">
+        <div class="chart-card-inner">
+          <div id="viz2" style="position: relative; width: 100%;">
+            <object class="tableauViz" style="display:none;">
+              <param name="host_url" value="https://public.tableau.com/">
+              <param name="name" value="otrografico/Dashboard1">
+            </object>
+          </div>
+          <script>
+            (function() {
+              var div = document.getElementById('viz2');
+              var viz = div.getElementsByTagName('object')[0];
+              function resizeViz3() {
+                viz.style.width = '100%';
+                viz.style.height = (window.innerWidth > 900 ? 900 : 700) + 'px';
+              }
+              resizeViz3();
+              window.addEventListener('resize', resizeViz3);
+              var s3 = document.createElement('script');
+              s3.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
+              viz.parentNode.insertBefore(s3, viz);
+            })();
+          </script>
         </div>
-        <script>
-          (function() {
-            var div = document.getElementById('viz2');
-            var viz = div.getElementsByTagName('object')[0];
-            function resizeViz3() {
-              viz.style.width = '100%';
-              viz.style.height = (window.innerWidth > 900 ? 900 : 700) + 'px';
-            }
-            resizeViz3();
-            window.addEventListener('resize', resizeViz3);
-            var s3 = document.createElement('script');
-            s3.src = 'https://public.tableau.com/javascripts/api/viz_v1.js';
-            viz.parentNode.insertBefore(s3, viz);
-          })();
-        </script>
       </div>
     </div>
 
-  </div>
-</main>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-brand">¿Qué<span>.</span>miramo?</div>
+    <div>Datos: YouTube Watch History · Visualizaciones: Tableau & Flourish · 2025</div>
+  </footer>
+
+  <script>
+    // Fade-in on scroll
+    const sections = document.querySelectorAll('.section');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    sections.forEach(s => observer.observe(s));
+  </script>
 
 </body>
 </html>
