@@ -520,7 +520,7 @@
       <li><a href="#contenido">Contenido</a></li>
       <li><a href="#dias">Días</a></li>
       <li><a href="#canales">Canales</a></li>
-      <li><a href="#evolucion">Evolución</a></li>
+
     </ul>
   </nav>
 
@@ -594,9 +594,7 @@
       </div>
       <div class="chart-card">
         <div class="chart-card-inner">
-          <div class="flourish-embed" data-src="visualisation/28160412">
-            <script src="https://public.flourish.studio/resources/embed.js"></script>
-          </div>
+          <div class="flourish-embed flourish-chart" data-src="visualisation/28268009"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/28268009/thumbnail" width="100%" alt="visualization" /></noscript></div>
         </div>
       </div>
     </div>
@@ -824,63 +822,6 @@
       </div>
     </div>
 
-    <!-- CHART 4: Racing Pie -->
-    <div class="section" id="evolucion">
-      <div class="section-header">
-        <div class="section-number">04</div>
-        <div>
-          <div class="section-label">Evolución semanal</div>
-          <h2 class="section-title">¿Cómo cambia lo que miro semana a semana?</h2>
-          <p style="margin-top: 10px; font-size: 0.85rem; color: var(--muted); font-weight: 300; letter-spacing: 0.02em;">
-            Dale play para ver cómo se mueven las categorías a lo largo del tiempo.
-          </p>
-        </div>
-      </div>
-      <div class="chart-card">
-        <div class="chart-card-inner" style="padding: 32px 28px;">
-
-          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 8px;">
-            <div>
-              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; letter-spacing: 0.04em; color: var(--text);" id="rp-week-label">Semana 1</div>
-              <div style="font-size: 0.75rem; color: var(--muted); letter-spacing: 0.08em;" id="rp-date-range">29 Dic – 4 Ene, 2026</div>
-            </div>
-            <div style="text-align: right;">
-              <div style="font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted);">Total horas</div>
-              <div style="font-family: 'Bebas Neue', sans-serif; font-size: 1.6rem; letter-spacing: 0.04em; color: var(--accent);" id="rp-total-hours">0h</div>
-            </div>
-          </div>
-
-          <div style="display: flex; gap: 10px; margin-bottom: 20px; align-items: center;">
-            <button id="rp-playBtn" onclick="rpTogglePlay()" style="
-              background: transparent;
-              border: 1px solid rgba(255,0,0,0.4);
-              color: var(--accent);
-              padding: 6px 20px;
-              font-family: 'DM Sans', sans-serif;
-              font-size: 0.8rem;
-              font-weight: 500;
-              letter-spacing: 0.1em;
-              text-transform: uppercase;
-              cursor: pointer;
-              border-radius: 4px;
-              transition: background 0.2s, border-color 0.2s;
-            " onmouseover="this.style.background='rgba(255,0,0,0.1)'" onmouseout="this.style.background='transparent'">
-              Reproducir
-            </button>
-            <input type="range" id="rp-slider" min="0" max="10" value="0" style="flex: 1;"
-              oninput="rpGoToWeek(parseInt(this.value))">
-          </div>
-
-          <div style="position: relative; width: 100%; height: 440px;">
-            <canvas id="rpPieChart"></canvas>
-          </div>
-
-          <div id="rp-legend" style="display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 20px; font-size: 0.75rem; color: var(--muted);"></div>
-
-        </div>
-      </div>
-    </div>
-
   </main>
 
   <!-- FOOTER -->
@@ -939,183 +880,7 @@
     heroObserver.observe(document.querySelector('.hero-meta'));
   </script>
 
-  <!-- Racing Pie Chart scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/chartjs-plugin-datalabels/2.2.0/chartjs-plugin-datalabels.min.js"></script>
-  <script>
-    Chart.register(ChartDataLabels);
 
-    const rpWeeks = [
-      { label: "Semana 1", dates: "29 Dic – 4 Ene", data: { "Music": 30.37, "Entertainment": 0.18, "People & Blogs": 2.06, "News & Politics": 3.85, "Sports": 1.75, "Education": 0.09, "Film & Animation": 0.11, "Comedy": 0.01 } },
-      { label: "Semana 2", dates: "5 – 11 Ene", data: { "Entertainment": 28.87, "Music": 9.92, "People & Blogs": 1.11, "Comedy": 0.96, "Gaming": 0.11, "Education": 0.14, "Film & Animation": 0.19 } },
-      { label: "Semana 3", dates: "12 – 18 Ene", data: { "Entertainment": 29.57, "Music": 15.62, "People & Blogs": 7.67, "Comedy": 1.24, "Sports": 4.05, "Gaming": 1.08, "Education": 0.61 } },
-      { label: "Semana 4", dates: "19 – 25 Ene", data: { "Entertainment": 34.67, "Music": 123.53, "Travel & Events": 21.52, "People & Blogs": 20.22, "Comedy": 1.51, "Sports": 1.99, "News & Politics": 1.08, "Education": 0.24 } },
-      { label: "Semana 5", dates: "26 Ene – 1 Feb", data: { "Entertainment": 21.32, "People & Blogs": 16.45, "Pets & Animals": 8.10, "Music": 1.35, "Comedy": 1.78, "Education": 0.55, "Sports": 1.00 } },
-      { label: "Semana 6", dates: "2 – 8 Feb", data: { "Entertainment": 32.23, "Music": 12.00, "People & Blogs": 14.41, "Comedy": 1.72, "Gaming": 1.18, "Education": 1.43, "Sports": 0.98, "News & Politics": 1.42 } },
-      { label: "Semana 7", dates: "9 – 15 Feb", data: { "Entertainment": 43.62, "Music": 39.59, "Gaming": 13.32, "People & Blogs": 18.69, "Sports": 10.37, "Education": 5.14, "Comedy": 2.16, "News & Politics": 3.33 } },
-      { label: "Semana 8", dates: "16 – 22 Feb", data: { "People & Blogs": 29.14, "Entertainment": 24.77, "Gaming": 18.82, "Music": 21.89, "Education": 18.04, "Science & Tech": 6.39, "Sports": 7.46, "Film & Animation": 1.13 } },
-      { label: "Semana 9", dates: "23 Feb – 1 Mar", data: { "Music": 63.23, "Entertainment": 12.45, "Gaming": 12.03, "People & Blogs": 9.34, "Sports": 3.52, "Comedy": 1.16 } },
-      { label: "Semana 10", dates: "2 – 8 Mar", data: { "People & Blogs": 45.07, "Entertainment": 31.39, "Music": 27.80, "Comedy": 3.66, "Education": 3.49, "Sports": 4.49, "Gaming": 1.16, "Howto & Style": 1.89 } },
-      { label: "Semana 11", dates: "9 – 15 Mar", data: { "People & Blogs": 10.82, "Entertainment": 8.52, "Music": 8.75, "Sports": 2.78, "Comedy": 1.39, "Gaming": 1.02 } },
-    ];
-
-    const RP_COLORS = {
-      "Music":           "#534AB7",
-      "Entertainment":   "#D85A30",
-      "People & Blogs":  "#1D9E75",
-      "Gaming":          "#BA7517",
-      "Sports":          "#378ADD",
-      "Education":       "#D4537E",
-      "Comedy":          "#639922",
-      "News & Politics": "#888580",
-      "Travel & Events": "#3C3489",
-      "Pets & Animals":  "#993C1D",
-      "Film & Animation":"#185FA5",
-      "Howto & Style":   "#3B6D11",
-      "Science & Tech":  "#A32D2D",
-    };
-
-    const RP_TOP_N = 8;
-    let rpCurrentWeek = 0;
-    let rpPlaying = false;
-    let rpInterval = null;
-    let rpChart = null;
-
-    function rpGetTop(weekData) {
-      return Object.entries(weekData).sort((a, b) => b[1] - a[1]).slice(0, RP_TOP_N);
-    }
-
-    const rpOuterPlugin = {
-      id: 'rpOuterLabels',
-      afterDraw(chart) {
-        const { ctx, chartArea, data } = chart;
-        const meta = chart.getDatasetMeta(0);
-        const cx = (chartArea.left + chartArea.right) / 2;
-        const cy = (chartArea.top + chartArea.bottom) / 2;
-        const tot = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-
-        meta.data.forEach((arc, i) => {
-          const val = chart.data.datasets[0].data[i];
-          const pct = val / tot;
-          if (pct < 0.04) return;
-
-          const mid = (arc.startAngle + arc.endAngle) / 2;
-          const outerR = arc.outerRadius + 22;
-          const x = cx + outerR * Math.cos(mid);
-          const y = cy + outerR * Math.sin(mid);
-          const label = chart.data.labels[i];
-          const short = label.length > 13 ? label.split(' ').slice(0, 2).join(' ') : label;
-          const color = RP_COLORS[label] || '#888';
-
-          ctx.save();
-          ctx.beginPath();
-          ctx.moveTo(cx + (arc.outerRadius + 4) * Math.cos(mid), cy + (arc.outerRadius + 4) * Math.sin(mid));
-          ctx.lineTo(cx + (arc.outerRadius + 16) * Math.cos(mid), cy + (arc.outerRadius + 16) * Math.sin(mid));
-          ctx.strokeStyle = color;
-          ctx.lineWidth = 1.5;
-          ctx.stroke();
-
-          ctx.font = '500 11px "DM Sans", sans-serif';
-          ctx.fillStyle = color;
-          ctx.textAlign = x > cx ? 'left' : 'right';
-          ctx.textBaseline = 'middle';
-          ctx.fillText(short, x + (x > cx ? 2 : -2), y);
-          ctx.restore();
-        });
-      }
-    };
-    Chart.register(rpOuterPlugin);
-
-    function rpBuild(weekIdx) {
-      const w = rpWeeks[weekIdx];
-      const entries = rpGetTop(w.data);
-      const labels = entries.map(e => e[0]);
-      const values = entries.map(e => e[1]);
-      const colors = labels.map(l => RP_COLORS[l] || '#888');
-      const total = values.reduce((a, b) => a + b, 0);
-
-      document.getElementById('rp-week-label').textContent = w.label;
-      document.getElementById('rp-date-range').textContent = w.dates + ', 2026';
-      document.getElementById('rp-total-hours').textContent = total.toFixed(1) + 'h';
-      document.getElementById('rp-slider').value = weekIdx;
-
-      document.getElementById('rp-legend').innerHTML = labels.map((l, i) =>
-        `<span style="display:flex;align-items:center;gap:5px;">
-          <span style="width:10px;height:10px;border-radius:2px;background:${colors[i]};flex-shrink:0;"></span>
-          <span>${l}</span>
-          <span style="color:var(--text);font-weight:500;">${((values[i]/total)*100).toFixed(0)}%</span>
-        </span>`
-      ).join('');
-
-      const dlDisplay = (ctx) => (ctx.dataset.data[ctx.dataIndex] / total) > 0.04;
-      const dlFormatter = (val, ctx) => {
-        const pct = (val / total) * 100;
-        const lbl = ctx.chart.data.labels[ctx.dataIndex];
-        const short = lbl.length > 12 ? lbl.split(' ')[0] : lbl;
-        return pct >= 8 ? `${short}\n${pct.toFixed(0)}%` : `${pct.toFixed(0)}%`;
-      };
-
-      if (!rpChart) {
-        rpChart = new Chart(document.getElementById('rpPieChart'), {
-          type: 'doughnut',
-          data: { labels, datasets: [{ data: values, backgroundColor: colors, borderWidth: 2, borderColor: 'rgba(255,255,255,0.06)', hoverOffset: 10 }] },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            cutout: '38%',
-            layout: { padding: 65 },
-            animation: { animateRotate: true, duration: 700 },
-            plugins: {
-              legend: { display: false },
-              tooltip: { callbacks: { label: (ctx) => ` ${ctx.raw.toFixed(1)}h (${((ctx.raw/total)*100).toFixed(1)}%)` } },
-              datalabels: {
-                display: dlDisplay,
-                color: '#fff',
-                anchor: 'center',
-                align: 'center',
-                formatter: dlFormatter,
-                font: { size: 11, weight: '500', family: '"DM Sans", sans-serif' },
-                textAlign: 'center',
-              }
-            }
-          }
-        });
-      } else {
-        rpChart.data.labels = labels;
-        rpChart.data.datasets[0].data = values;
-        rpChart.data.datasets[0].backgroundColor = colors;
-        rpChart.options.plugins.datalabels.display = dlDisplay;
-        rpChart.options.plugins.datalabels.formatter = dlFormatter;
-        rpChart.update('active');
-      }
-    }
-
-    function rpGoToWeek(idx) { rpCurrentWeek = idx; rpBuild(rpCurrentWeek); }
-
-    function rpTogglePlay() {
-      rpPlaying = !rpPlaying;
-      document.getElementById('rp-playBtn').textContent = rpPlaying ? 'Pausar' : 'Reproducir';
-      if (rpPlaying) {
-        rpInterval = setInterval(() => {
-          rpCurrentWeek = (rpCurrentWeek + 1) % rpWeeks.length;
-          rpBuild(rpCurrentWeek);
-          if (rpCurrentWeek === rpWeeks.length - 1) {
-            rpPlaying = false;
-            clearInterval(rpInterval);
-            document.getElementById('rp-playBtn').textContent = 'Reproducir';
-          }
-        }, 1600);
-      } else {
-        clearInterval(rpInterval);
-      }
-    }
-
-    // Init when section becomes visible
-    const rpObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => { if (entry.isIntersecting && !rpChart) { rpBuild(0); rpObserver.disconnect(); } });
-    }, { threshold: 0.2 });
-    rpObserver.observe(document.getElementById('evolucion'));
-  </script>
 
 </body>
 </html>
